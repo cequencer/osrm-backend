@@ -1,3 +1,7 @@
+# 5.6.0
+  - Changes from 5.5.0
+    - osrm-extract/osrm-contract will now output peak memory (STXXL/RAM) usage upon completion
+
 # 5.5.0
   - Changes from 5.4.0
     - API:
