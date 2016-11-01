@@ -166,9 +166,10 @@ install:
   - export CC=${CCOMPILER} CXX=${CXXCOMPILER}
   - cmake .. -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DENABLE_MASON=${ENABLE_MASON:-OFF} -DENABLE_ASSERTIONS=${ENABLE_ASSERTIONS:-OFF} -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS:-OFF} -DENABLE_COVERAGE=${ENABLE_COVERAGE:-OFF} -DENABLE_SANITIZER=${ENABLE_SANITIZER:-OFF} -DBUILD_TOOLS=ON -DBUILD_COMPONENTS=${BUILD_COMPONENTS:-OFF} -DENABLE_CCACHE=ON
   - echo "travis_fold:start:MAKE"
-  - make --jobs=${JOBS}
-  - make tests --jobs=${JOBS}
-  - make benchmarks --jobs=${JOBS}
+  - make osrm-extract VERBOSE=1 --jobs=3
+  - make --jobs=${JOBS} VERBOSE=1
+  - make tests --jobs=${JOBS} VERBOSE=1
+  - make benchmarks --jobs=${JOBS} VERBOSE=1
   - echo "travis_fold:end:MAKE"
   - ccache -s
   - sudo make install
