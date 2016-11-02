@@ -66,6 +66,22 @@ matrix:
           packages: ['libstdc++-5-dev']
       env: CLANG_VERSION='3.8.1' BUILD_TYPE='Release' ENABLE_MASON=ON
 
+    - os: linux
+      compiler: "mason-debug"
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['libstdc++-5-dev', 'ccache']
+      env: BUILD_TYPE='Debug' ENABLE_MASON=ON
+
+    - os: osx
+      compiler: "mason-release"
+      env: BUILD_TYPE='Release' ENABLE_MASON=ON
+
+    - os: osx
+      compiler: "mason-release"
+      env: BUILD_TYPE='Debug' ENABLE_MASON=ON
+
     # - os: linux
     #   compiler: "gcc-6-release"
     #   addons: &gcc6
